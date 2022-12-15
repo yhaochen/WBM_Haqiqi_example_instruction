@@ -9,18 +9,20 @@ See the detailed information of WBM at: https://github.com/wsag/WBM
 # Source Data
 The required source data can be downloaded from the FTP server:
 
-**ftp merrimack.sr.unh.edu
+**ftp merrimack.sr.unh.edu**
 
-login: ftp
+**login: ftp**
 
-password:anything**
+**password:anything**
 
 Users can first locate the directory to store the data (note: the data size is more than 1TB, make sure the computation system has available space), and then use the following "wget" command to download the data: 
 
 `wget --ftp-user=ftp --ftp-pass=anything -r ftp://merrimack.sr.unh.edu/US_CDL_v3_data`
 
-For users with access to the Penn State ROAR system, the data is downloaded at: 
+For users with access to the Penn State ROAR system and within the PCHES team , the data is pre-downloaded at: 
 
 **/gpfs/group/kaf26/default/private/WBM_data/**
 
+# Instructions to run the WBM
 
+### 1. Download and install the WBM via container 
