@@ -25,25 +25,69 @@ For users with access to the Penn State ROAR system and within the PCHES team , 
 
 # Instructions to run the WBM
 
-For convenience, before starting, create an empty folder where you want to install the WBM and corresponding files (this is different from the folder that stores the data). Locate to that folder and we assume its name is "WBM_folder".
+For convenience, before starting, create an empty folder where you want to install the WBM and corresponding files (this is different from the folder that stores the data). Locate to this folder.
 
-### 1. Download and install the WBM via container
+### 1. Download and install the WBM 
 
 Here we simply introduce the required steps and commands for downloading and installation. See more detailed information about the installation at: https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md (credit to Matthew Lisk).
 
 
 First download the WBM container and its readme file:
 
-`wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0.sif`
-
-`wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0_Readme.txt`
+```
+wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0.sif 
+wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0_Readme.txt
+```
 
 Then download the WBM storage directory structure and its readme file:
 
-`wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0.tar.gz`
-
-`wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0_Readme.txt`
+```
+wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0.tar.gz
+wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0_Readme.txt
+```
 
 Then uncompress the storage directory file:
 
 `tar -xvzf ./wbm_storage_v1.0.0.tar.gz`
+
+After this step you should see a folder called `wbm_storage_v1.0.0`. Its structure and corresponding data inside it is contained in this repository.
+
+### 2. Create a WBM container
+
+A container is required to ensure the environment is the same when running WBM. To create a container, there are several options (again see details at https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md). You may pick one from the two options (they are essentially the same).
+
+Option 1: Creating a Singularity Instance
+```
+singularity instance start \
+  -B ./wbm_storage_v1.0.0/data:/wbm/data \
+  -B ./wbm_storage_v1.0.0/data_init:/wbm/data_init \
+  -B ./wbm_storage_v1.0.0/spool:/wbm/spool \
+  -B ./wbm_storage_v1.0.0/wbm_output:/wbm/wbm_output \
+  -B ./wbm_storage_v1.0.0/WBM_run_state:/wbm/WBM_run_state \
+  -B ./wbm_storage_v1.0.0/wbm_init:/wbm/wbm_init \
+  -B ./wbm_storage_v1.0.0/model:/wbm/model \
+  -B ./wbm_storage_v1.0.0/utilities:/wbm/utilities \
+  -B ./wbm_storage_v1.0.0/gdal_test_files:/wbm/gdal_test_files \
+  ./wbm_opensource_v1.0.0.sif wbm_os_instance1
+
+  ##Accessing the instance
+  singularity shell instance://wbm_os_instance1
+ ```
+ 
+ Option 2: Opening an Interactive Shell
+
+```
+singularity shell \
+  -B ./wbm_storage_v1.0.0/data:/wbm/data \
+  -B ./wbm_storage_v1.0.0/data_init:/wbm/data_init \
+  -B ./wbm_storage_v1.0.0/spool:/wbm/spool \
+  -B ./wbm_storage_v1.0.0/wbm_output:/wbm/wbm_output \
+  -B ./wbm_storage_v1.0.0/WBM_run_state:/wbm/WBM_run_state \
+  -B ./wbm_storage_v1.0.0/wbm_init:/wbm/wbm_init \
+  -B ./wbm_storage_v1.0.0/model:/wbm/model \
+  -B ./wbm_storage_v1.0.0/utilities:/wbm/utilities \
+  -B ./wbm_storage_v1.0.0/gdal_test_files:/wbm/gdal_test_files \
+  ./wbm_opensource_v1.0.0.sif
+ ```
+
+### 3. Prepare init files
