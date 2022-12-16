@@ -1,10 +1,10 @@
 # Purpose
-This repository lists a step-by-step instruction on how to run the WBM submodel performed in Haqiqi et al (2021). 
+This repository lists a step-by-step instruction on how to run the Water Balance Model (WBM) submodel performed in Haqiqi et al (2021). 
 
 (Full citation of the paper: Haqiqi, I. et al. (2021) ‘Quantifying the impacts of compound extremes on agriculture’, Hydrology and Earth System Sciences, 25(2), pp. 551–564. Available at: https://doi.org/10.5194/hess-25-551-2021.)
 
 # Intro to WBM
-See the detailed information of WBM at: https://github.com/wsag/WBM
+The introduction of WBM is not the focus of this repository. See the detailed information of WBM at: https://github.com/wsag/WBM
 
 # Source Data
 The required source data can be downloaded from the FTP server:
@@ -15,7 +15,7 @@ The required source data can be downloaded from the FTP server:
 
 **password:anything**
 
-Users can first locate the directory to store the data (note: the data size is more than 1TB, make sure the computation system has available space), and then use the following "wget" command to download the data: 
+Users can first locate the folder to store the data (note: the data size is more than 1TB, make sure the computation system has available space), and then use the following "wget" command to download the data: 
 
 `wget --ftp-user=ftp --ftp-pass=anything -r ftp://merrimack.sr.unh.edu/US_CDL_v3_data`
 
@@ -25,4 +25,25 @@ For users with access to the Penn State ROAR system and within the PCHES team , 
 
 # Instructions to run the WBM
 
-### 1. Download and install the WBM via container 
+For convenience, before starting, create an empty folder where you want to install the WBM and corresponding files (this is different from the folder that stores the data). Locate to that folder and we assume its name is "WBM_folder".
+
+### 1. Download and install the WBM via container
+
+Here we simply introduce the required steps and commands for downloading and installation. See more detailed information about the installation at: https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md (credit to Matthew Lisk).
+
+
+First download the WBM container and its readme file:
+
+`wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0.sif`
+
+`wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0_Readme.txt`
+
+Then download the WBM storage directory structure and its readme file:
+
+`wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0.tar.gz`
+
+`wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0_Readme.txt`
+
+Then uncompress the storage directory file:
+
+`tar -xvzf ./wbm_storage_v1.0.0.tar.gz`
