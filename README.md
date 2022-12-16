@@ -25,7 +25,7 @@ For users with access to the Penn State ROAR system and within the PCHES team , 
 
 # Instructions to run the WBM
 
-For convenience, before starting, create an empty folder where you want to install the WBM and corresponding files (this is different from the folder that stores the data). Locate to this folder.
+For convenience, before starting, create an empty folder where you want to install the WBM and corresponding files (this is different from the folder that stores the data). Locate to this folder (assume it's called `/My_WBM`).
 
 ### 1. Download and install the WBM 
 
@@ -90,4 +90,43 @@ singularity shell \
   ./wbm_opensource_v1.0.0.sif
  ```
 
-### 3. Prepare init files
+### 3. Prepare the data init files
+
+WBM's model settings are controlled by different initialization files (.init files). There is a core init file that lists the other required init files. The other init files point to different data and parameters. In this instruction we begin with the init files pointing to each dataset. All the data init files should be put in the  `/my_WBM/wbm_storage_v1.0.0/data_init` folder.
+
+### 3.1. Climate data and cropland data init files
+
+These init files are in the "/squam.sr.unh.edu/US_CDL_v3_data/data_init/" folder under the data folder. They include: 
+
+**PRISM data: **
+
+temperature and precipitation
+
+**MERRA data:**
+
+Daily and annual temperature, precipitation, cloud coverage, relative humidity, albedo, wind speed in horizontal and vertical direction, leaf area index
+
+**CDL data:**
+
+Cropland fraction
+
+**MIRCA data:**
+
+Crop area fraction
+
+(For PSU cluster users: the path to these init files is: `/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/data_init/`)
+
+Firstly, copy these init files to the `/data_init` folder where you install the WBM (`/my_WBM/wbm_storage_v1.0.0/data_init`). 
+
+`cp /gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/data_init /my_WBM/wbm_storage_v1.0.0/data_init` 
+
+Then, for each init file, open it and change the line of "File_Path" based on the data path that this init file is pointing to. For example, for `merra_t2m_d.init` file, change this line to:
+
+`File_Path	=> '(1e20,1e5):/gpfs/scratch/hxy46/Haqiqi_example/data/squam.sr.unh.edu/US_CDL_v3_data/climate/MERRA_ATM/_YEAR_/MERRA.prod.assim.tavg1_2d_slv_Nx._YEAR__MONTH__DAY_.SUB.nc;'`
+
+where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and day from the start date to the end date (the 3rd and 4th line in the init file). Make sure the file path is correct, and the "Var_Name" line is consistent with the variable name in the .nc files that this init file is pointing to.
+
+### 5. Prepare the core init file
+
+ This core init file can be found as "US_CDL_v3.init" in this repository.
+
