@@ -127,7 +127,7 @@ WBM's model settings are controlled by different initialization files (.init fil
 
 These init files are in the "/squam.sr.unh.edu/US_CDL_v3_data/data_init/" folder under the data folder. They include: 
 
-**PRISM data: **
+**PRISM data:**
 
 temperature and precipitation
 
