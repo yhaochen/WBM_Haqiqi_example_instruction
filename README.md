@@ -39,20 +39,20 @@ wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0.sif
 wget https://wbm.unh.edu/v1.0.0/wbm_opensource_v1.0.0_Readme.txt
 ```
 
-Then download the WBM storage directory structure and its readme file:
+Then download the WBM storage folder structure and its readme file:
 
 ```
 wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0.tar.gz
 wget https://wbm.unh.edu/v1.0.0/wbm_storage_v1.0.0_Readme.txt
 ```
 
-Then uncompress the storage directory file:
+Then uncompress the storage folder file:
 
 `tar -xvzf ./wbm_storage_v1.0.0.tar.gz`
 
-After this step you should see a folder called `wbm_storage_v1.0.0`. Its structure and corresponding data inside it is contained in this repository.
+After this step you should see a folder called `wbm_storage_v1.0.0`. 
 
-### 2. Create a WBM container
+### 2. Create a WBM container and verify WBM installation
 
 A container is required to ensure the environment is the same when running WBM. To create a container, there are several options (again see details at https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md). You may pick one from the two options (they are essentially the same).
 
@@ -89,6 +89,30 @@ singularity shell \
   -B ./wbm_storage_v1.0.0/gdal_test_files:/wbm/gdal_test_files \
   ./wbm_opensource_v1.0.0.sif
  ```
+
+If you build the container successfully, you should see **"singularity>"** now in your terminal (instead of the normal folder path). The template folder `/wbm_storage_v1.0.0` you downloaded contains the basic storage folder structure and some test data to help users check whether the model is successfully installed. If you want to verify the model installation, please run the following command:
+
+`/wbm/model/wbm.pl -v /wbm/wbm_init/test.ini`
+
+And you should see the following messages after some time:
+
+```
+Summary for Year 2000: 
+Rff-Gl/Precip  Yr = (8.24 / 15.84), 52.03 % 
+Runoff-Dischg  Yr = (8.24 - 8.21), 0.03 km3
+ET Non/Irr/Rfd Yr = (7.60 / 0.00 / 0.00) km3
+Surface W Storage =  0.03 km3
+Grndwater Storage =  0.65 km3
+
+Y=2000 Spool files added = 0
+    Run state is saved.
+```
+
+If you see the above messages, it means the WBM works. Then you can delete all the files inside the following subfolders inside `wbm_storage_v1.0.0` (because we will change them when running the Haqiqi et al example):
+
+`/wbm_init, /spool, /data_init` 
+
+As a reference, the folder structure and corresponding data inside it is contained in this repository.
 
 ### 3. Prepare the data init files
 
