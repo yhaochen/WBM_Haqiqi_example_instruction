@@ -110,7 +110,11 @@ Y=2000 Spool files added = 0
 
 If you see the above messages, it means the WBM works. Then you can delete all the files inside the following subfolders inside `wbm_storage_v1.0.0` (because we will change them when running the Haqiqi et al example):
 
-`/wbm_init, /spool, /data_init` 
+```
+/wbm_init
+/spool
+/data_init
+```
 
 As a reference, the folder structure and corresponding data inside it is contained in this repository.
 
