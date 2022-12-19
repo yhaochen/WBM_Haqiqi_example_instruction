@@ -114,6 +114,7 @@ If you see the above messages, it means the WBM works. Then you can delete all t
 /wbm_init
 /spool
 /data_init
+/gdal_test_files
 ```
 
 As a reference, the folder structure and corresponding data inside it is contained in this repository.
