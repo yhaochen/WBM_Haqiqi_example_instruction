@@ -117,7 +117,7 @@ If you see the above messages, it means the WBM works. Then you can delete all t
 /gdal_test_files
 ```
 
-As a reference, the folder structure and corresponding data inside it is contained in this repository.
+As a reference, the folder structure and corresponding data inside it is contained in this repository. 
 
 ### 3. Prepare the data init files
 
@@ -143,7 +143,7 @@ Cropland fraction
 
 Crop area fraction
 
-(For PSU cluster users: the path to these init files is: `/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/data_init/`)
+(For PSU ROAR users: the path to these init files is: `/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/data_init/`)
 
 Firstly, copy these init files to the `/data_init` folder where you install the WBM (`/my_WBM/wbm_storage_v1.0.0/data_init`). 
 
@@ -153,7 +153,18 @@ Then, for each init file, open it and change the line of "File_Path" based on th
 
 `File_Path	=> '(1e20,1e5):/gpfs/scratch/hxy46/Haqiqi_example/data/squam.sr.unh.edu/US_CDL_v3_data/climate/MERRA_ATM/_YEAR_/MERRA.prod.assim.tavg1_2d_slv_Nx._YEAR__MONTH__DAY_.SUB.nc;'`
 
-where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and day from the start date to the end date (the 3rd and 4th line in the init file). Make sure the file path is correct, and the "Var_Name" line is consistent with the variable name in the .nc files that this init file is pointing to.
+where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and day from the start date to the end date (the 3rd and 4th line in the init file). Make sure the file path is correct, and the "Var_Name" line is consistent with the variable name in the .nc files that this init file is pointing to. To check the variable name in the corresponding .nc file, you may first locate the folder of this .nc file and use the following command to check the variables inside it:
+
+`ncdump -h XXX.nc`
+
+where XXX should be replaced by the actual name of the .nc file. You can see a list of variables, and then find the one corresponds to the name of this .nc file (usually it's the one that is neither time nor location such as latitude or longtitude).
+
+
+### 3.2. Crops data
+
+In the Haqiqi et al. example, the crop-relevant data are the main part that takes most of the storage space. Similarly to the climate and cropland data, we need to setup a series of .init files to point to different .nc files. The crop-relevant data and parameters are in the following folder (for PSU ROAR users):
+
+`/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/`
 
 ### 5. Prepare the core init file
 
