@@ -1,0 +1,105 @@
+{
+ID		=> 'US_CDL_v3',
+Comment		=> 'CONUS simulation with CDL crops and soil moisture drying function applied',
+Project		=> 'DOE 1.1',
+MT_Code_Name	=>  {
+          MT_ID		=> 'US_CDL_v3_runoff',
+          Output_dir	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/wbm_output',
+          Run_End	=> '2015-12-31',
+          Run_Start	=> '1981-01-01'
+        },
+Spinup          =>  {
+	Start 		=> '1981-01-01',
+	End		=> '1981-12-31',
+	Loops		=> '5',
+	State_ID	=> ''
+}, 
+Output_vars	=> 'runoff
+                         discharge
+                         soilMoist',
+MT_Precip	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/PRISM_ppt_4kmD2_d.init',
+          Secondary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra_prectot_d.init'
+        },
+precipFraction	=> '',
+MT_airT		=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/PRISM_tmean_4kmD2_d.init',
+          Secondary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra_t2m_d.init'
+        },
+Network		=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/network/flowdirection206_us.asc',
+Projection	=> 'epsg:4326',
+Routing		=> 'LRR',
+wbmParam	=>  {
+          scrPrintScale	=> '0.01'
+        },
+ConnectivityNetwork	=> '',
+Reservoirs	=> '',
+soilAWCapacity	=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/soil/SSURGO_SoilData_awc_frac_mm_m_CONUS_1km.tif',
+FieldCap	=> '',
+WiltingPoint	=> '',
+rootingDepth	=> 'NETCDF:/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/soil/Global_Terrain_RootDepthWBM_LTXXXX_30min.nc:STNetwork',
+PET		=> 'Penman-Monteith',
+MT_windU	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_u10m_d.init'
+        },
+MT_windV	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_v10m_d.init'
+        },
+MT_cloudFr	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_cldtot_d.init'
+        },
+MT_humidity	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_rh2m_d.init'
+        },
+MT_albedo	=>  {
+          Primary	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra_albedo_dc.init'
+        },
+airT_yc		=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_t2m_yc.init',
+openWaterEvap	=> '',
+Glaciers	=> '',
+Aquifers	=> '',
+Springs		=> '',
+snowBands	=> 0,
+lapseDownscale	=> '',
+DIN		=> '',
+Runoff_mask	=> '',
+Impervious	=> '',
+openWater	=> '',
+canopyHt	=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/canopy/Simard_Pinto_3DGlobalVeg_JGR_10km.tif',
+MT_LAI		=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/merra2_lai2_dc.init',
+WaterDemand	=> '',
+landCollapse	=> 'average',
+LandCover	=> '',
+Irrigation	=>  {
+          CropAreaFrac	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/cdl_cropland.init',
+          CropAreaFracPatch	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data_init/mirca_cropAreaFraction.init',
+          CropParFile	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data/CDL-US-M_CropParameters.csv',
+          CropParFilePatch	=> '/storage/home/hxy46/scratch/WBM_model/Haqiqi_test/data/MIRCA_CropParameters.csv',
+          CrpAreaGrwth	=> 0,
+          ExtraCoeff	=> 1,
+          IrrAreaGrwth	=> 0,
+          IrrEfficiency	=> 'NETCDF:/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/Global_Crops_IrrEfficiencyGlobalExtent_30min.nc:IrrEfficiency',
+          NoGrowth	=> 1,
+          Order		=> 1,
+          ReturnCoeff	=> '0.5',
+          SearchDist	=> 30,
+          dailyIrr	=> 0,
+          extendCropTS	=> 1,
+          ricePaddyDepth	=> 50,
+          ricePercolation	=> 'NETCDF:/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/RicePercolationRate.nc:RicePercolationRate',
+          useVIS	=> 0
+        },
+WM_mod_precip	=> '',
+WM_obs_precip	=> '',
+WM_mod_airT	=> '',
+WM_obs_airT	=> '',
+PostProcessing	=>  {
+          Forks		=> 8,
+          Polygon_Aggregation	=> '',
+          Run		=> 1,
+          TA_multi_year_start	=> '',
+          TA_multi_year_timestep	=> '',
+          Temporal_Aggregation	=> 1
+        },
+WaterRights	=> ''
+}
