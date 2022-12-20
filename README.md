@@ -121,7 +121,7 @@ As a reference, the folder structure and corresponding data inside it is contain
 
 ### 3. Prepare the data init files
 
-WBM's model settings are controlled by different initialization files (.init files). There is a core .init file that lists the other required data .init files. The other data .init files point to different data and parameters. In this instruction we begin with the .init files pointing to each dataset. All the data .init files should be put in the  `/my_WBM/wbm_storage_v1.0.0/data_init` folder. For your convenience, all the .init files are included in this GitHub repo under the `/init_files` folder. (Note only a part of them are directly included in the downloaded data).
+WBM's model settings are controlled by different initialization files (.init files). There is a core .init file that lists the other required data .init files. The other data .init files point to different data and parameters. In this section we begin with the .init files pointing to each dataset (because the core .init file is quite different from the data .init files and it should dealt with in the end). All the data .init files should be put in the `/my_WBM/wbm_storage_v1.0.0/data_init` folder. For your convenience, all the .init files are included in this GitHub repo under the `/init_files` folder. (Note only a part of them are directly included in the downloaded data).
 
 ### 3.1. Climate data and cropland data init files
 
@@ -159,8 +159,9 @@ where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and
 
 where XXX should be replaced by the actual name of the .nc file. You can see a list of variables, and then find the one corresponds to the name of this .nc file (usually it's the one that is neither time nor location such as latitude or longtitude).
 
+For PSU ROAR users, you may directly copy the corresponding .init files under the `/init_files` folder of this repo to your local folder (`/my_WBM/wbm_storage_v1.0.0/data_init`) because this step is already done. (The .init files in this repo are different from the original files in the data folder)
 
-### 3.2. Crops data init files
+### 3.2. Crops data .init files
 
 In the Haqiqi et al. example, the crop-relevant data are the main part that takes most of the storage space. Similarly to the climate and cropland data, we need to setup a series of .init files to point to different data files. The crop-relevant data and parameters are in the following folder (for PSU ROAR users):
 
@@ -180,15 +181,21 @@ However, unlike the climate data, these required .init files are not directly in
 
 **Fallow land fraction (fallow_fr)**
 
-Note that these data are different for different types of crops (except for AddedWater and fallow_fr)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "types" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). If you want to use the "individual" approach, the required .init files are under the `/init_files/individual_crop` folder of this repo. The .init files for "average" approach are under the `/init_files' folder.
+Note that these data are different for different types of crops (except for AddedWater and fallow_fr)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "types" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). If you want to use the "individual" approach, the required .init files are under the `/init_files/individual_crop` folder of this repo. The .init files for "average" approach are under the `/init_files` folder.
 
 There exists two sources of crop data: CDL data (those begins with CDL-US-M) and MIRCA data (those begins with MC). MIRCA is a global dataset and CDL is only for US. The two sources also report the data differently so a pre-processer is needed to transform CDL data. This pre-processor is outside the scope of this instruction. You just need to know that when using the "average" approach, there are: 
 
 2(crop data sources) * (3(parameters for each crop type: awCap, fr, Kc) * 3(types of crops) + 1(CDF) * 2(types of irrigated crops) + 1(AddedWater) + 1(fallow_fr)) = 26 crop-related .init files.
 
-Similarly to the .init files for climate, for each individual .init file, you need to make sure the data path and variable name are consistent with the .nc files that the .init file is pointing to.
+Similarly to the .init files for climate, for each individual .init file, you need to make sure the data path and variable name are consistent with the .nc files that the .init file is pointing to. Again for PSU ROAR users, you may neglect this step because this is already checked for the files in this GitHub repo (simply copy the .init files under the `/init_files` folder to your local directory (`/my_WBM/wbm_storage_v1.0.0/data_init`)).
 
-### 5. Prepare the core init file
+### 4 Crop parameter tables
 
- This core init file can be found as "US_CDL_v3.init" in this repository.
 
+### 5 Core .init file
+
+This core init file can be found as "US_CDL_v3.init" in this repository.
+
+### 6 Spool the data
+
+### 7 Run the model
