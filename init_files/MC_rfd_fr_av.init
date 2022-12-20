@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'MC_rfd_fr_av',
+Time_Series	=> 'daily',
+Start_Date	=> '2009-01-01',
+End_Date	=> '2016-12-31',
+Name		=> 'rainfed crop land fraction, MIRCA dataset',
+Var_Name	=> 'MC_rfd_fr_av',
+Units		=> 'fraction',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'fraction',
+Bands		=> 365,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/MIRCA/crop_fraction_av/MC_rfd_fr_av.nc;'
+}

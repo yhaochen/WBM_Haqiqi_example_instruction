@@ -1,0 +1,17 @@
+{
+Code_Name	=> 'merra2_v10m_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1980-01-01',
+End_Date	=> '2017-12-31',
+Name	=> 'MERRA2 northward wind at 10m, Daily',
+Var_Name	=> 'V10M',
+Units	=> 'm/sec',
+Var_Scale	=> '1',
+Var_Offset	=> '0',
+Orig_Units	=> 'm/sec',
+Bands	=> 1,
+Processing	=> 'steps=400',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/V10M/_YEAR_/MERRA2.V10M._YEAR_-_MONTH_-_DAY_.nc;',
+comment => 'downloaded from https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/'
+}

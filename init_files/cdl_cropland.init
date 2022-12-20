@@ -1,0 +1,17 @@
+{
+Code_Name	=> 'CDL TotalCropland',
+Name	=> 'Cropland Fraction CDL - United States',
+Time_Series     => 'yearly',
+Start_Date      => '2009-01-01',
+End_Date        => '2015-12-31',
+Var_Name	=> 'Band1',
+Units	=> 'per pixel',
+Var_Scale	=> '1',
+Var_Offset	=> '0',
+Orig_Units	=> 'per pixel',
+Bands	=> 1,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/CDL_crop_frac/_YEAR__cdl_cropland.tif',
+Comment => 'Metadata at above path.'
+}

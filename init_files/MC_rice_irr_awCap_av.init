@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'MC_rice_irr_awCap_av',
+Time_Series	=> 'daily',
+Start_Date	=> '2009-01-01',
+End_Date	=> '2016-12-31',
+Name		=> 'rice irrigated available water capacity, MIRCA dataset',
+Var_Name	=> 'MC_rice_irr_awCap_ave',
+Units		=> 'mm',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'mm',
+Bands		=> 365,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/MIRCA/awCap_av/MC_rice_irr_awCap_av.nc;'
+}

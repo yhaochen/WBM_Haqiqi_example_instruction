@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'merra2_rh2m_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1980-01-01',
+End_Date	=> '2017-12-31',
+Name	=> 'MERRA relative humidity, Daily',
+Var_Name	=> 'RH2M',
+Units	=> 'percent',
+Var_Scale	=> '1',
+Var_Offset	=> '0',
+Orig_Units	=> 'percent',
+Bands	=> 1,
+Processing	=> 'nodata=-9999',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/RH2M/_YEAR_/MERRA2.RH2M._YEAR_-_MONTH_-_DAY_.nc;'
+}

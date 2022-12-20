@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'merra2_t2m_yc',
+Time_Series	=> 'yearly_clim',
+Start_Date	=> '0000-00-00',
+End_Date	=> '0000-00-00',
+Name	        => 'MERRA air temperature, yearly climatology',
+Var_Name	=> 'T2M',
+Units           => 'C',
+Var_Scale	=> '1',
+Var_Offset	=> '-273.15',
+Orig_Units	=> 'K',
+Bands	        => 1,
+Processing	=> 'steps=400',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/climatology/T2M/MERRA2.T2M.yearly_clim.nc;'
+}

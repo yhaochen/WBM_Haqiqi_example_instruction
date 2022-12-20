@@ -1,0 +1,18 @@
+{
+Code_Name	=> 'mirca_cropAreaFraction',
+Time_Series	=> '',
+Start_Date	=> '2000-00-00',
+End_Date	=> '',
+Name	=> 'MIRCA2000 crop area as fraction of cell area',
+Var_Name	=> 'crop_area',
+Units	=> 'fraction',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'fraction',
+Bands	=> 1,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/MIRCA_crop_frac/crop_area_fraction.nc;',
+citation	=> '1. Portmann, F.T., S. Siebert, and P. Doell (2010), MIRCA2000--Global monthly irrigated and rainfed crop areas around the year 2000: A new high-resolution data set for agricultural and hydrological modeling, Global Biogeochem. Cycles, 24, GB1011, doi:10.1029/2008GB003425.
+2. Portmann, F.T. (2011) Global estiamtion of monthly irrigated and rainfed crop areas on a 5 arc-minute grid. Frankfurt Hydrology Paper 09, Institute of Physical Geography, University of Frankfurt, Frankfurt am Main, Germany, http://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/23013. website: https://www.uni-frankfurt.de/45218023/MIRCA'
+}

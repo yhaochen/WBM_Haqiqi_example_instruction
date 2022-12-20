@@ -1,0 +1,17 @@
+{
+Code_Name	=> 'PRISM_tmean_4kmD2_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1981-01-01',
+End_Date	=> '2016-10-26',
+Name		=> 'PRISM, US 4km, Temperature, Daily',
+Var_Name	=> 'temperature',
+Units	=> 'C',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'C',
+Bands		=> 366,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/tmean/PRISM_tmean_4kmD2__YEAR_.nc',
+Comment		=> ''
+}

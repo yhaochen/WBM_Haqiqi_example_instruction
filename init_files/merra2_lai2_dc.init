@@ -1,0 +1,18 @@
+{
+Code_Name	=> 'merra2_lai2_dc',
+Time_Series	=> 'daily_clim',
+Start_Date	=> '0000-01-01',
+End_Date	=> '0000-12-31',
+Name	=> 'MERRA2 leaf area index, daily climatology',
+Var_Name	=> 'LAI',
+Units	=> 'indx',
+Var_Scale	=> '1',
+Var_Offset	=> '0',
+Orig_Units	=> 'indx',
+Bands	=> 365,
+Processing	=> 'steps=400',
+Projection	=> 'epsg:4326',
+File_Path	=> '/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/climatology/LAI/MERRA2.LAI.daily_clim.nc;', 
+comment => 'lai data downloaded from http://gmao.gsfc.nasa.gov/merra/. Computation of daily climatology by Alex Prusevich.',
+citation	=> 'The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2), Ronald Gelaro, et al., 2017, J. Clim., doi: 10.1175/JCLI-D-16-0758.1'
+}

@@ -1,0 +1,17 @@
+{
+Code_Name	=> 'PRISM_ppt_4kmD2_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1981-01-01',
+End_Date	=> '2016-10-26',
+Name		=> 'PRISM, US 4km, Precipitation (Rain and Snowmelt), Daily',
+Var_Name	=> 'precip',
+Units	=> 'mm/day',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'mm/day',
+Bands		=> 366,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/ppt/PRISM_ppt_4kmD2__YEAR_.nc;',
+Comment		=> 'http://prism.oregonstate.edu'
+}

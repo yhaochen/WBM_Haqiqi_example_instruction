@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'merra2_cldtot_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1980-01-01',
+End_Date	=> '2017-12-31',
+Name	=> 'MERRA cloud fraction, Daily',
+Var_Name	=> 'CLDTOT',
+Units	=> 'fraction',
+Var_Scale	=> '1',
+Var_Offset	=> '0',
+Orig_Units	=> 'fraction',
+Bands	=> 1,
+Processing	=> 'steps=400',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/CLDTOT/_YEAR_/MERRA2.CLDTOT._YEAR_-_MONTH_-_DAY_.nc;'
+}

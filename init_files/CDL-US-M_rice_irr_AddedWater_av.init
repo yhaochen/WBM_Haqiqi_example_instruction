@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'CDL-US-M_rice_irr_AddedWater_av',
+Time_Series	=> 'daily',
+Start_Date	=> '2009-01-01',
+End_Date	=> '2016-12-31',
+Name		=> 'rice irrigated added water, CDL-US land cover dataset',
+Var_Name	=> 'MC_rice_AddedWater_av',
+Units		=> 'mm/day',
+Var_Scale	=> 1,
+Var_Offset	=> 0,
+Orig_Units	=> 'mm/day',
+Bands		=> 365,
+Processing	=> '',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/MIRCA_CDL-US-M/added_water/_YEAR_/MC_rice_irr_AddedWater_av.nc;'
+}

@@ -1,0 +1,16 @@
+{
+Code_Name	=> 'merra_t2m_d',
+Time_Series	=> 'daily',
+Start_Date	=> '1979-01-01',
+End_Date	=> '2015-12-31',
+Name	=> 'MERRA Temperature at 2m, Daily',
+Var_Name	=> 't2m',
+Units	=> 'C',
+Var_Scale	=> 1,
+Var_Offset	=> -273.15,
+Orig_Units	=> 'K',
+Bands	=> 1,
+Processing	=> 'steps=400',
+Projection	=> 'epsg:4326',
+File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/MERRA_ATM/_YEAR_/MERRA.prod.assim.tavg1_2d_slv_Nx._YEAR__MONTH__DAY_.SUB.nc;'
+}
