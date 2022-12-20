@@ -241,6 +241,6 @@ where X is a number that represents how many nodes to use in data spooling.
 
 If the spooling works as expected, you should see that for each day between 2009 and 2015, all the .init files will generate additional files under the spool folder. More specifically it's the `spool/flow_direction206/` folder. Then inside each sub-folder, there should be 5110 files.
 
-Note: the spooling process takes a long time, so you shouldn't directly running it in the terminal. Instead, creating a .pbs script and submit as a job is better and takes a shorter time. An example .pbs script is provided in this repo. Use the 3rd option ("singularity exec") when building the container because it allows direct call of model after building the container. 
+Note: the spooling process takes a long time, so you shouldn't directly running it in the terminal. Instead, creating a .pbs script and submit as a job is better and takes a shorter time. An example .pbs script is provided in this repo. Use the 3rd option ("singularity exec") when building the container because it allows direct call of model after building the container. Also remember to use your own folder path when building the container.
 
 ### 7 Run the model
