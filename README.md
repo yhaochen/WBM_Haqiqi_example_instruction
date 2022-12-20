@@ -121,11 +121,11 @@ As a reference, the folder structure and corresponding data inside it is contain
 
 ### 3. Prepare the data init files
 
-WBM's model settings are controlled by different initialization files (.init files). There is a core init file that lists the other required init files. The other init files point to different data and parameters. In this instruction we begin with the init files pointing to each dataset. All the data init files should be put in the  `/my_WBM/wbm_storage_v1.0.0/data_init` folder.
+WBM's model settings are controlled by different initialization files (.init files). There is a core .init file that lists the other required data .init files. The other data .init files point to different data and parameters. In this instruction we begin with the .init files pointing to each dataset. All the data .init files should be put in the  `/my_WBM/wbm_storage_v1.0.0/data_init` folder. For your convenience, all the .init files are included in this GitHub repo under the `/init_files` folder. (Note only a part of them are directly included in the downloaded data).
 
 ### 3.1. Climate data and cropland data init files
 
-These init files are in the "/squam.sr.unh.edu/US_CDL_v3_data/data_init/" folder under the data folder. They include: 
+These init files are directly available in the "/squam.sr.unh.edu/US_CDL_v3_data/data_init/" folder under the data folder. In this GitHub repo, they are under the `/init_files` folder. They include: 
 
 **PRISM data:**
 
@@ -151,7 +151,7 @@ Firstly, copy these init files to the `/data_init` folder where you install the 
 
 Then, for each init file, open it and change the line of "File_Path" based on the data path that this init file is pointing to. For example, for `merra_t2m_d.init` file, change this line to:
 
-`File_Path	=> '(1e20,1e5):/gpfs/scratch/hxy46/Haqiqi_example/data/squam.sr.unh.edu/US_CDL_v3_data/climate/MERRA_ATM/_YEAR_/MERRA.prod.assim.tavg1_2d_slv_Nx._YEAR__MONTH__DAY_.SUB.nc;'`
+`File_Path	=> '(1e20,1e5):/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/climate/MERRA_ATM/_YEAR_/MERRA.prod.assim.tavg1_2d_slv_Nx._YEAR__MONTH__DAY_.SUB.nc;'`
 
 where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and day from the start date to the end date (the 3rd and 4th line in the init file). Make sure the file path is correct, and the "Var_Name" line is consistent with the variable name in the .nc files that this init file is pointing to. To check the variable name in the corresponding .nc file, you may first locate the folder of this .nc file and use the following command to check the variables inside it:
 
@@ -160,11 +160,21 @@ where "_YEAR_" "_MONTH_" "_DAY_" automatically searches for each year, month and
 where XXX should be replaced by the actual name of the .nc file. You can see a list of variables, and then find the one corresponds to the name of this .nc file (usually it's the one that is neither time nor location such as latitude or longtitude).
 
 
-### 3.2. Crops data
+### 3.2. Crops data init files
 
-In the Haqiqi et al. example, the crop-relevant data are the main part that takes most of the storage space. Similarly to the climate and cropland data, we need to setup a series of .init files to point to different .nc files. The crop-relevant data and parameters are in the following folder (for PSU ROAR users):
+In the Haqiqi et al. example, the crop-relevant data are the main part that takes most of the storage space. Similarly to the climate and cropland data, we need to setup a series of .init files to point to different data files. The crop-relevant data and parameters are in the following folder (for PSU ROAR users):
 
 `/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/`
+
+However, unlike the climate data, these required .init files are not directly included in the pre-downloaded data. You will need to create these files in the same folder as you used in the previous section (`/my_WBM/wbm_storage_v1.0.0/data_init`). They include the following data:
+
+**Available water capacity (awCap)**
+**Crop depletion factor (CDF)**
+**Fraction out of all croplands (fr)**
+**Crop-specific scalar (Kc)**
+**Additional added water for rice (AddedWater)**
+
+Note that these data are different for different types of crops (except for AddedWater)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "type" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). 
 
 ### 5. Prepare the core init file
 
