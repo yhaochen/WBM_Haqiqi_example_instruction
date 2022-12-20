@@ -169,12 +169,24 @@ In the Haqiqi et al. example, the crop-relevant data are the main part that take
 However, unlike the climate data, these required .init files are not directly included in the pre-downloaded data. You will need to create these files in the same folder as you used in the previous section (`/my_WBM/wbm_storage_v1.0.0/data_init`). They include the following data:
 
 **Available water capacity (awCap)**
-**Crop depletion factor (CDF)**
+
+**Crop depletion factor for irrigated crops (CDF)**
+
 **Fraction out of all croplands (fr)**
+
 **Crop-specific scalar (Kc)**
+
 **Additional added water for rice (AddedWater)**
 
-Note that these data are different for different types of crops (except for AddedWater)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "type" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). 
+**Fallow land fraction (fallow_fr)**
+
+Note that these data are different for different types of crops (except for AddedWater and fallow_fr)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "types" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). If you want to use the "individual" approach, the required .init files are under the `/init_files/individual_crop` folder of this repo. The .init files for "average" approach are under the `/init_files' folder.
+
+There exists two sources of crop data: CDL data (those begins with CDL-US-M) and MIRCA data (those begins with MC). MIRCA is a global dataset and CDL is only for US. The two sources also report the data differently so a pre-processer is needed to transform CDL data. This pre-processor is outside the scope of this instruction. You just need to know that when using the "average" approach, there are: 
+
+2(crop data sources) * (3(parameters for each crop type: awCap, fr, Kc) * 3(types of crops) + 1(CDF) * 2(types of irrigated crops) + 1(AddedWater) + 1(fallow_fr)) = 26 crop-related .init files.
+
+Similarly to the .init files for climate, for each individual .init file, you need to make sure the data path and variable name are consistent with the .nc files that the .init file is pointing to.
 
 ### 5. Prepare the core init file
 
