@@ -193,13 +193,21 @@ Similarly to the .init files for climate, for each individual .init file, you ne
 
 Because the number of .init files for crops is rather large, it cannot be directly listed by the core .init file. Instead, two .csv tables (one for CDL crop data and one for MIRCA crop data) are used to point to these .init files. Each table records the .init file path of each crop type. The original templates of these tables can be found under `/crops` sub-folder under the data folder (/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/). In this GitHub repo, two templates are provided when choosing the "average" approach (`CDL-US-M_CropParameters.csv` and `MIRCA_CropParameters.csv`). These two templates have less lines than the originial templates because there are only three crop types.
 
-Copy the two templates in this repo (copy the original templates from the data folder if you want to try the "individual" approach) to `/data` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). 
+Copy the two templates in this repo (copy the original templates from the data folder if you want to try the "individual" approach) to the `/data` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). 
 
 For each .csv table, you will need to change the file paths inside it to the file paths in your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data_init/FILE_NAME`). Each column represents a parameter or data, and each line represents a crop type. For the two templates in this repo, there are only file paths of the above mentioned 26 crop .init files (13 files for each .csv file) so it is convenient for you to locate where you need to change. The columns where you need to change are: RootDepth, CropDepletionFactor, LandFracTS, Kc_TS, AddedWater_TS. 
 
 ### 5 Core .init file
 
-This core init file can be found as "US_CDL_v3.init" in this GitHub repo. It's original version 
+This core .init file can be found as "US_CDL_v3.init" in this GitHub repo. You may copy it to the `/wbm_init` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). The core .init file lists all the inputs to the WBM. You can see the paths of all the previously mentioned .init files, two crop parameter tables and some other data that are not in the form of .init files (for example: river network and soil available capacity).
+
+You will need to change all the file paths based on your local folder (for PSU ROAR users, some paths of data files do not need to be changed).
+
+Note that this line determines whether to use the "average" approach or the "individual" approach. Simply delete 'average' if you want to use the default "individual" approach. (Note then you will also need to change all the corresponding .init files and .csv files)
+
+`landCollapse	=> 'average'`
+
+You may keep all other lines the same for the Haqiqi et al example. For more detailed information of each input, please see `https://github.com/wsag/WBM/blob/main/instructions/WBM_Usage_and_Input_Reference.xlsx`
 
 ### 6 Spool the data
 
