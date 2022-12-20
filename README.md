@@ -54,7 +54,7 @@ After this step you should see a folder called `wbm_storage_v1.0.0`.
 
 ### 2. Create a WBM container and verify WBM installation
 
-A container is required to ensure the environment is the same when running WBM. To create a container, there are several options (again see details at https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md). You may pick one from the two options (they are essentially the same).
+A container is required to ensure the environment is the same when running WBM. To create a container, there are several options (again see details at https://github.com/pches/WBM_localPSUguide/blob/main/WBM_howTo.md). You may pick one from the three options (they are essentially the same).
 
 Option 1: Creating a Singularity Instance
 ```
@@ -89,6 +89,22 @@ singularity shell \
   -B ./wbm_storage_v1.0.0/gdal_test_files:/wbm/gdal_test_files \
   ./wbm_opensource_v1.0.0.sif
  ```
+ 
+ Option 3: passing a command to WBM container: this option can directly combine the call of WBM with the container setup. 
+ 
+ ```
+singularity exec \
+  -B ./wbm_storage_v1.0.0/data:/wbm/data \
+  -B ./wbm_storage_v1.0.0/data_init:/wbm/data_init \
+  -B ./wbm_storage_v1.0.0/spool:/wbm/spool \
+  -B ./wbm_storage_v1.0.0/wbm_output:/wbm/wbm_output \
+  -B ./wbm_storage_v1.0.0/WBM_run_state:/wbm/WBM_run_state \
+  -B ./wbm_storage_v1.0.0/wbm_init:/wbm/wbm_init \
+  -B ./wbm_storage_v1.0.0/model:/wbm/model \
+  -B ./wbm_storage_v1.0.0/utilities:/wbm/utilities \
+  -B ./wbm_storage_v1.0.0/gdal_test_files:/wbm/gdal_test_files \
+  ./wbm_opensource_v1.0.0.sif /wbm/model/wbm.pl -v /wbm/wbm_init/test.init
+```
 
 If you build the container successfully, you should see **"singularity>"** now in your terminal (instead of the normal folder path). The template folder `/wbm_storage_v1.0.0` you downloaded contains the basic storage folder structure and some test data to help users check whether the model is successfully installed. If you want to verify the model installation, please run the following command:
 
