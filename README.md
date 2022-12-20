@@ -181,20 +181,25 @@ However, unlike the climate data, these required .init files are not directly in
 
 **Fallow land fraction (fallow_fr)**
 
-Note that these data are different for different types of crops (except for AddedWater and fallow_fr)!! In this repo, we will adopt a simpler classification of crop types. We only consider three "types" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). If you want to use the "individual" approach, the required .init files are under the `/init_files/individual_crop` folder of this repo. The .init files for "average" approach are under the `/init_files` folder.
+Note that these data are different for different types of crops (except for AddedWater and fallow_fr)!! In this repo, we will adopt a simpler classification of crop types (called "average" approach below). We only consider three "types" of crops: (1) all rainfed crops, (2) all irrigated crops except for rice, (3) rice. As you may have noticed, rice has a quite special role here because rice plantation requires a lot of water (much more than other crops). This "average" approach saves much time when dealing with the crop-related data. In Haqiqi et al., each individual type of crop has its own data (this leads to more than 200 .init files). If you want to use this "individual" approach, the required .init files are under the `/init_files/individual_crop` folder of this repo. The .init files for "average" approach are under the `/init_files` folder.
 
 There exists two sources of crop data: CDL data (those begins with CDL-US-M) and MIRCA data (those begins with MC). MIRCA is a global dataset and CDL is only for US. The two sources also report the data differently so a pre-processer is needed to transform CDL data. This pre-processor is outside the scope of this instruction. You just need to know that when using the "average" approach, there are: 
 
 2(crop data sources) * (3(parameters for each crop type: awCap, fr, Kc) * 3(types of crops) + 1(CDF) * 2(types of irrigated crops) + 1(AddedWater) + 1(fallow_fr)) = 26 crop-related .init files.
 
-Similarly to the .init files for climate, for each individual .init file, you need to make sure the data path and variable name are consistent with the .nc files that the .init file is pointing to. Again for PSU ROAR users, you may neglect this step because this is already checked for the files in this GitHub repo (simply copy the .init files under the `/init_files` folder to your local directory (`/my_WBM/wbm_storage_v1.0.0/data_init`)).
+Similarly to the .init files for climate, for each individual .init file, you need to make sure the data path and variable name are consistent with the .nc files that the .init file is pointing to. Again for PSU ROAR users, you may neglect this step because this is already checked for the files in this GitHub repo (simply copy the .init files under the `/init_files` folder to your local folder (`/my_WBM/wbm_storage_v1.0.0/data_init`)).
 
 ### 4 Crop parameter tables
 
+Because the number of .init files for crops is rather large, it cannot be directly listed by the core .init file. Instead, two .csv tables (one for CDL crop data and one for MIRCA crop data) are used to point to these .init files. Each table records the .init file path of each crop type. The original templates of these tables can be found under `/crops` sub-folder under the data folder (/gpfs/group/kaf26/default/private/WBM_data/squam.sr.unh.edu/US_CDL_v3_data/crops/). In this GitHub repo, two templates are provided when choosing the "average" approach (`CDL-US-M_CropParameters.csv` and `MIRCA_CropParameters.csv`). These two templates have less lines than the originial templates because there are only three crop types.
+
+Copy the two templates in this repo (copy the original templates from the data folder if you want to try the "individual" approach) to `/data` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). 
+
+For each .csv table, you will need to change the file paths inside it to the file paths in your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data_init/FILE_NAME`). Each column represents a parameter or data, and each line represents a crop type. For the two templates in this repo, there are only file paths of the above mentioned 26 crop .init files (13 files for each .csv file) so it is convenient for you to locate where you need to change. The columns where you need to change are: RootDepth, CropDepletionFactor, LandFracTS, Kc_TS, AddedWater_TS. 
 
 ### 5 Core .init file
 
-This core init file can be found as "US_CDL_v3.init" in this repository.
+This core init file can be found as "US_CDL_v3.init" in this GitHub repo. It's original version 
 
 ### 6 Spool the data
 
