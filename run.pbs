@@ -1,0 +1,24 @@
+#PBS -A kaf26_c_g_sc_default
+#PBS -l nodes=4:ppn=20
+#PBS -l mem=32gb
+#PBS -l walltime=24:00:00
+
+echo "Job started on `hostname` at `date`"
+
+cd /gpfs/scratch/hxy46/WBM_model
+
+singularity exec \
+  -B ./Haqiqi_test/data:/wbm/data \
+  -B ./Haqiqi_test/data_init:/wbm/data_init \
+  -B ./Haqiqi_test/spool:/wbm/spool \
+  -B ./Haqiqi_test/wbm_output:/wbm/wbm_output \
+  -B ./Haqiqi_test/WBM_run_state:/wbm/WBM_run_state \
+  -B ./Haqiqi_test/wbm_init:/wbm/wbm_init \
+  -B ./Haqiqi_test/model:/wbm/model \
+  -B ./Haqiqi_test/utilities:/wbm/utilities \
+  -B ./Haqiqi_test/gdal_test_files:/wbm/gdal_test_files \
+   ./wbm_opensource_v1.0.0.sif /wbm/model/wbm.pl -v /wbm/wbm_init/US_CDL_v3.init
+
+
+echo "Job Ended at `date`"
+
