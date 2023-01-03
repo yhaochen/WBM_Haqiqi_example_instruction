@@ -215,7 +215,9 @@ For each .csv table, you will need to change the file paths inside it to the fil
 
 ### 5 Core .init file
 
-This core .init file can be found as "US_CDL_v3.init" in this GitHub repo. You may copy it to the `/wbm_init` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). The core .init file lists all the inputs to the WBM. You can see the paths of all the previously mentioned .init files, two crop parameter tables and some other data that are not in the form of .init files (for example: river network and soil available capacity).
+This core .init file can be found as "US_CDL_v3.init" in this GitHub repo. You may copy it to the `/wbm_init` folder of your local WBM folder (`/my_WBM/wbm_storage_v1.0.0/data`). The core .init file lists all the inputs to the WBM. You can see the paths of all the previously mentioned .init files, two crop parameter tables and some other data that are not in the form of .init files (for example: river network and soil available capacity). See more details in the attached "WBM_Usage_and_Input_Reference.csv" file.
+
+The section `Output_vars` defines which output variables you want to save. In our example we only keep the runoff, discharge and soil moisture. 
 
 You will need to change all the file paths based on your local folder (for PSU ROAR users, some paths of data files do not need to be changed).
 
@@ -244,3 +246,11 @@ If the spooling works as expected, you should see that for each day between 2009
 Note: the spooling process takes a long time, so you shouldn't directly running it in the terminal. Instead, creating a .pbs script and submit as a job is better and takes a shorter time. An example .pbs script is provided in this repo. Use the 3rd option ("singularity exec") when building the container because it allows direct call of model after building the container. Also remember to use your own folder path when building the container.
 
 ### 7 Run the model
+
+After you make sure the spool process is finished (which means you see 5110 files in each sub-folder), you can run the model by calling the core .init file.
+
+`/wbm/model/wbm.pl -v /wbm/wbm_init/US_CDL_v3.init`
+
+Again, this may take a long time so submitting a job via .pbs script is recommended. An example script is attached in this repository.
+
+All the model outputs will be in the `/wbm_output` folder.
