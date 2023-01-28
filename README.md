@@ -234,13 +234,13 @@ All the required .init files are ready at this point. You can use the following 
 
 "wbm.pl" is the main script that runs the model. Adding the "-noRun" flag will test the model setup but won't really run the model. This can help you check whether the settings are all good. If the model setup is good, you shouldn't see warnings or errors, and you should see a list of new files and folders under the '/wbm_output' folder. We will use a file called 'build_spool_batch.pl' next.
 
+*Note: in order to run the spool process successfully, you need to make sure you have the full permission to your spool and data folder (read, write and execute). The command to change the permission is: `chmod -R 700 <folder_name>`
+
 Then you will need to spool the data before actual model run. This step adjusts the spatial domain and resolution of all the data files based on the river network (In other words, the river network file determines the spatial domain and resolution of the WBM). Use the following command to spool the data:
 
 `/wbm/wbm_output/build_spool_batch.pl -f X`
 
 where X is a number that represents how many nodes to use in data spooling. Usually the larger the X is, the faster the spooling process is (for example, 100).
-
-*Note: in order to run the spool process successfully, you need to make sure you have the full permission to your spool and data folder (read, write and execute). The command to change the permission is: `chmod -r 700 <folder_name>`
 
 If the spooling works as expected, you should see that for each day between 2009 and 2015, all the .init files will generate additional files under the spool folder. More specifically it's the `spool/flow_direction206/` folder. Then inside each sub-folder of crop factors, there should be 5110 files.
 
