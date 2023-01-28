@@ -1,11 +1,11 @@
 #PBS -A kaf26_c_g_sc_default
-#PBS -l nodes=4:ppn=20
+#PBS -l nodes=1:ppn=10
 #PBS -l mem=40gb
 #PBS -l walltime=24:00:00
 
 echo "Job started on `hostname` at `date`"
 
-cd /gpfs/scratch/hxy46/WBM_model
+cd /storage/home/hxy46/work/WBM_model
 
 singularity exec \
   -B ./Haqiqi_test/data:/wbm/data \
