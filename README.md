@@ -130,7 +130,6 @@ If you see the above messages, it means the WBM works. Then you can delete all t
 /wbm_init
 /spool
 /data_init
-/gdal_test_files
 ```
 
 As a reference, the folder structure and corresponding data inside it is contained in this repository. 
@@ -233,7 +232,7 @@ All the required .init files are ready at this point. You can use the following 
 
 `/wbm/model/wbm.pl -v -noRun /wbm/wbm_init/US_CDL_v3.init`
 
-"wbm.pl" is the main script that runs the model. Adding the "-noRun" flag will test the model setup but won't really run the model. This can help you check whether the settings are all good. If the model setup is good, you shouldn't see warnings or errors. 
+"wbm.pl" is the main script that runs the model. Adding the "-noRun" flag will test the model setup but won't really run the model. This can help you check whether the settings are all good. If the model setup is good, you shouldn't see warnings or errors, and you should see a new file called 'build_spool_batch.pl' under the '/wbm_output' folder. 
 
 Then you will need to spool the data before actual model run. This step adjusts the spatial domain and resolution of all the data files based on the river network (In other words, the river network file determines the spatial domain and resolution of the WBM). Use the following command to spool the data:
 
